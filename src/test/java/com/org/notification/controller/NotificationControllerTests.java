@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 
-@ExtendWith(MockitoExtension.class) // This is necessary for Mockito to work with JUnit 5
+@ExtendWith(MockitoExtension.class)
 public class NotificationControllerTests {
     @Mock
     private EmailService emailService;
@@ -27,10 +27,8 @@ public class NotificationControllerTests {
         request.setEmail(email);
         request.setProductId(productId);
 
-        // Call the controller method
         String result = notificationController.sendOrderConfirmation(request);
 
-        // Verify the result
         assertEquals("Order confirmation email sent successfully!", result);
         verify(emailService).sendOrderConfirmationEmail(email, productId);
     }
